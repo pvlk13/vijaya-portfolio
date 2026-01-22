@@ -73,7 +73,7 @@
        async function updateCounter() {
          try {
             // This URL will come from your API Gateway later
-            let response = await fetch("https://YOUR_API_ID.execute-api.us-east-2.amazonaws.com/prod/visitor");
+            let response = await fetch("https://jo4y4ns3fhshh3kqx5fx2r5fry0dlwtk.lambda-url.us-east-2.on.aws");
             let data = await response.json();
             counter.innerHTML = data.views;
         } catch (err) {
