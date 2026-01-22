@@ -99,7 +99,7 @@
 
     async function updateCounter() {
         try {
-            let response = await fetch("https://jo4y4ns3fhshh3kqx5fx2r5fry0dlwtk.lambda-url.us-east-2.on.aws/");
+            let response = await fetch("https://5bbef50ef5.execute-api.us-east-2.amazonaws.com/visitor");
             let data = await response.json();
             
             // If data is just a number, use it. If it's 0, don't animate.
