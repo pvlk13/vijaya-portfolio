@@ -4,11 +4,11 @@
 
 **Creating a S3 bucket:**
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image.png)
+![image.png](images/image.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%201.png)
+![image.png](images/image%201.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%202.png)
+![image.png](images/image%202.png)
 
 You can upload any file type—images, backups, data, movies, and so on—into an S3 bucket. The maximum size of a file that you can upload by using the Amazon S3 console is 160 GB. To upload a file larger than 160 GB, use the AWS Command Line Interface (AWS CLI), AWS SDKs, or Amazon S3 REST API.
 
@@ -18,11 +18,11 @@ When you upload an object, the object is automatically encrypted using server-si
 
 **Upload Website Files**
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%203.png)
+![image.png](images/image%203.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%204.png)
+![image.png](images/image%204.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%205.png)
+![image.png](images/image%205.png)
 
  **CloudFront**
 
@@ -38,7 +38,7 @@ You create a CloudFront distribution to tell CloudFront where you want content t
 
 Then CloudFront uses computers—edge servers—that are close to your viewers to deliver that content quickly when someone wants to see it or use it.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%206.png)
+![image.png](images/image%206.png)
 
 The [Set up your AWS account](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/setting-up-cloudfront.html) topic describes prerequisites for the following tutorials, such as creating an AWS account and creating a user with administrative access.
 
@@ -56,39 +56,39 @@ To deploy this secure static website solution, you can choose from either of the
 
 Go to Route 53 and create a hosted zone
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%207.png)
+![image.png](images/image%207.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%208.png)
+![image.png](images/image%208.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%209.png)
+![image.png](images/image%209.png)
 
 Create a certificate 
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2010.png)
+![image.png](images/image%2010.png)
 
 Go inside and then press Create records in Route 53
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2011.png)
+![image.png](images/image%2011.png)
 
 That is a huge milestone! Getting the SSL certificate to "Success" means your **Domain**, **Route 53**, and **AWS Trust** are all properly linked.
 
 In CloudFront
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2012.png)
+![image.png](images/image%2012.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2013.png)
+![image.png](images/image%2013.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2014.png)
+![image.png](images/image%2014.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2015.png)
+![image.png](images/image%2015.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2016.png)
+![image.png](images/image%2016.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2017.png)
+![image.png](images/image%2017.png)
 
 The final step looks like this 
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2018.png)
+![image.png](images/image%2018.png)
 
 TLS is simply the modern, more secure version of SSL.
 
@@ -104,27 +104,27 @@ As a DevOps engineer, think of CloudFront as a **Global Cache**.
 - **Latency:** If someone visits your site from London, they don't have to wait for the data to travel all the way from your S3 bucket in Ohio. Instead, CloudFront fetches it once, stores it in a "London Edge Location," and serves it instantly to the next visitor there.
 - **Offloading:** It protects your "Origin" (the S3 bucket). Instead of S3 handling 1,000 requests, it handles **one** request from CloudFront, and CloudFront handles the other 999 from its cache.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2019.png)
+![image.png](images/image%2019.png)
 
 I choose the wrong  one now corrected it choosing Origin access control settings 
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2020.png)
+![image.png](images/image%2020.png)
 
 CloudFront provides two ways to send authenticated requests to an Amazon S3 origin: *origin access control* (OAC) and *origin access identity* (OAI). OAC helps you secure your origins, such as Amazon S3.
 
 Copy the policy as shown in the diagram 
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2021.png)
+![image.png](images/image%2021.png)
 
 as you can see in the diagram above u can find the go to S3 bucket permissions where you can edit the policy to paste the above one 
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2022.png)
+![image.png](images/image%2022.png)
 
 Even with the policy applied, CloudFront needs to know **which file** to show when someone just visits `vijayalakshmi-kurra-porfolio.website` without typing `/index.html`
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2023.png)
+![image.png](images/image%2023.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2024.png)
+![image.png](images/image%2024.png)
 
 Look at that `ANSWER: 4`. Those four IP addresses (`13.227.x.x`) are the front doors to the Amazon CloudFront global network
 
@@ -138,7 +138,7 @@ S3 Static Website Hosting is enabled .
 
 When both are enabled, they often conflict. S3 tries to "redirect" or handle requests in a way that breaks the OAC signature, resulting in that **403 Access Denied** XML error.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2025.png)
+![image.png](images/image%2025.png)
 
 ### **The 5 Main Steps Completed**
 
@@ -148,7 +148,7 @@ When both are enabled, they often conflict. S3 tries to "redirect" or handle req
 4. **DNS Management (Route 53 & Namecheap):** Pointed Namecheap domain to AWS Nameservers and created an **Alias A-Record** in Route 53 to map `vijayalakshmi-kurra-porfolio.website` to your CloudFront URL.
 5. **The "Fixes":** Disabled S3 static hosting (to avoid conflicts) and set `index.html` as the **Default Root Object** so the site loads automatically.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2026.png)
+![image.png](images/image%2026.png)
 
 CI/CD implementation using GitHub Actions
 
@@ -169,15 +169,15 @@ GitHub needs permission to talk to your AWS account.
 4. Go to the **Security Credentials** tab for this user and create an **Access Key**.
 5. **Save these!** You need the `Access Key ID` and `Secret Access Key`.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2027.png)
+![image.png](images/image%2027.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2028.png)
+![image.png](images/image%2028.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2029.png)
+![image.png](images/image%2029.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2030.png)
+![image.png](images/image%2030.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2031.png)
+![image.png](images/image%2031.png)
 
 Adding the code to calculate the number of views and this requires the following stack 
 
@@ -205,23 +205,23 @@ This is a core requirement of the **Cloud Resume Challenge**, and it uses the "
     - Add a new attribute -> **Number**.
     - Name it `views` and set the value to `0`.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2032.png)
+![image.png](images/image%2032.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2033.png)
+![image.png](images/image%2033.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2034.png)
+![image.png](images/image%2034.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2035.png)
+![image.png](images/image%2035.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2036.png)
+![image.png](images/image%2036.png)
 
 enable CORS 
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2037.png)
+![image.png](images/image%2037.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2038.png)
+![image.png](images/image%2038.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2039.png)
+![image.png](images/image%2039.png)
 
 In Real scenarios you never expose your lambda functions they shud b  API Gateway infront of for security and Throttling purpose as if you get exposed to any malicious  bot then it will make ur lambda functions run many times which result in u paying money
 
@@ -229,7 +229,7 @@ Going with the **HTTP API** is the "Modern DevOps" way—it's cheaper than the
 
   
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2040.png)
+![image.png](images/image%2040.png)
 
 **Configure Integrations:** * Click **Add integration**.
 
@@ -237,24 +237,24 @@ Going with the **HTTP API** is the "Modern DevOps" way—it's cheaper than the
 - Select your region (`us-east-2`) and pick your `VisitorCounterFunction`.
 - **API Name:** `Portfolio-API`
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2041.png)
+![image.png](images/image%2041.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2042.png)
+![image.png](images/image%2042.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2043.png)
+![image.png](images/image%2043.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2044.png)
+![image.png](images/image%2044.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2045.png)
+![image.png](images/image%2045.png)
 
 If you can see the number in your browser at that link, it means the entire "Backbone" of your cloud resume is successfully built: **DynamoDB** stores the data, **Lambda** processes the math, and **API Gateway** provides the secure doorway.
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2046.png)
+![image.png](images/image%2046.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2047.png)
+![image.png](images/image%2047.png)
 
 When you check the Resource-based policy statement in Lambda Functions you should be able to see the apigateway getting populated on its own. Which prevents the lambda to be accessed from outside other than thru API Gateway
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2048.png)
+![image.png](images/image%2048.png)
 
-![image.png](Hosting%20Static%20Website%20in%20Cloud/image%2049.png)
+![image.png](images/image%2049.png)
