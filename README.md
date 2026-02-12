@@ -1,4 +1,5 @@
-[Hosting Static Website in Cloud.md](https://github.com/user-attachments/files/25264689/Hosting.Static.Website.in.Cloud.md)
+
+[Hosting Static Website in Cloud.md](https://github.com/user-attachments/files/25265133/Hosting.Static.Website.in.Cloud.md)
 # Hosting Static Website in Cloud:
 
 **Creating a S3 bucket:**
